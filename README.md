@@ -9,7 +9,7 @@ TODO: Delete this and the text above, and describe your gem
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rankmi_indicators_update', git: 'https://github.com/sheikhhamza012/rankmi_indicators_update_gem.git
+gem 'rankmi_indicators_update', git: 'https://github.com/sheikhhamza012/rankmi_indicators_update_gem.git'
 ```
 
 And then execute:
@@ -19,7 +19,11 @@ And then execute:
 
 ## Usage
 
-
+- ` RankmiIndicatorsUpdate::Parse.transform_to_rankmi_template('excel_files/excel.xlsx')` will create file `Metas BCP.xlsx`
+- ` RankmiIndicatorsUpdate::Parse.first_output_of_step_two('excel_files/excel-2.xlsx')` will create file ` Metas BCP con info rankmi y tipo.xlsx `
+- ` RankmiIndicatorsUpdate::Parse.separate_records('Metas BCP con info rankmi y tipo.xlsx')` will create file `Metas a crear.xlsx`
+- ` RankmiIndicatorsUpdate::Parse.define_goals_to_eliminate_and_update('Metas BCP con info rankmi y tipo.xlsx')` will create files ` Análisis accione.xlsx` and `Metas a borrar.xlsx`
+- ` RankmiIndicatorsUpdate::Parse.excel_with_goals_to_update('Metas BCP con info rankmi y tipo.xlsx')` will create file `Metas a actualizar.xlsx`
 
 ## Development
 
