@@ -1,7 +1,7 @@
-require "rankmi_indicators_update/version"
-require "rankmi_indicators_update/helpers"
+# require "rankmi_indicators_update/version"
+require_relative "rankmi_indicators_update/helpers"
 require 'rubyXL'
-require 'byebug'
+# require 'byebug'
 require 'rubyXL/convenience_methods'
 
 module RankmiIndicatorsUpdate
@@ -28,7 +28,8 @@ module RankmiIndicatorsUpdate
       copy_column(input[0],"NC = 100%",output[0],"expected_value")
       copy_column(input[0],"Resultado",output[0],"score")
       
-      output.write("Metas BCP.xlsx")
+      # output.write("Metas BCP.xlsx")
+      return output
     end
 
 
@@ -68,7 +69,8 @@ module RankmiIndicatorsUpdate
       insert_a_col_at_start(input[0], "identifier_code")
       process_the_identifier_code(input[0],input[1])
       
-      input.write("Metas BCP con info rankmi y tipo.xlsx")
+      # input.write("Metas BCP con info rankmi y tipo.xlsx")
+      return input
   
     end
 
@@ -89,7 +91,8 @@ module RankmiIndicatorsUpdate
       
       delete_col(output[0],find_col(output[0],"tipo"))
       delete_col(output[0],find_col(output[0],"identifier_code"))
-      output.write('Metas a crear.xlsx')
+      # output.write('Metas a crear.xlsx')
+      return output
     end
 
   #------------------ step 2 file 3 and 4-------------
@@ -118,8 +121,9 @@ module RankmiIndicatorsUpdate
         end
         output[0].add_cell(i+1, 3 , info)
       end
-      output.write('Análisis accione.xlsx')
-      metas_a_borar_output.write('Metas a borrar.xlsx')
+      # output.write('Análisis accione.xlsx')
+      # metas_a_borar_output.write('Metas a borrar.xlsx')
+      return {analisi: output, borrar: metas_a_borar_output}
     end
 
 
@@ -144,8 +148,8 @@ module RankmiIndicatorsUpdate
       if codigo_index
         delete_col(output[0],codigo_index)
       end
-      output.write('Metas a actualizar.xlsx')
-
+      # output.write('Metas a actualizar.xlsx')
+      return output
     end
   end
 end
